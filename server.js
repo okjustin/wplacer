@@ -597,33 +597,23 @@ class WPlacer {
                     continue;
                 }
                 // positive colors
-                    if (tplColor > 0) {
-                        // Check for explicit colour and transparency
-                        const ignoreTransparent = currentSettings.ignoreTransparentPaint;
-                        const onlyExplicit = currentSettings.onlyPaintExplicitColours;
-                        // Assume transparent is 0 or -1, explicit is >0
-                        if (ignoreTransparent && (tplColor === 0 || tplColor === -1)) {
-                            continue;
-                        }
-                        if (onlyExplicit && !Object.values(pallete).includes(tplColor)) {
-                            continue;
-                        }
-                        const shouldPaint = this.templateSettings.skipPaintedPixels
-                            ? canvasColor === 0
-                            : tplColor !== canvasColor;
-                        if (shouldPaint && this.hasColor(tplColor)) {
-                            out.push({
-                                tx: targetTx,
-                                ty: targetTy,
-                                px: localPx,
-                                py: localPy,
-                                color: tplColor,
-                                isEdge,
-                                localX: x,
-                                localY: y,
-                            });
-                        }
+                if (tplColor > 0) {
+                    const shouldPaint = this.templateSettings.skipPaintedPixels
+                        ? canvasColor === 0
+                        : tplColor !== canvasColor;
+                    if (shouldPaint && this.hasColor(tplColor)) {
+                        out.push({
+                            tx: targetTx,
+                            ty: targetTy,
+                            px: localPx,
+                            py: localPy,
+                            color: tplColor,
+                            isEdge,
+                            localX: x,
+                            localY: y,
+                        });
                     }
+                }
             }
         }
         return out;

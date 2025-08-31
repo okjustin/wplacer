@@ -39,8 +39,6 @@ const antiGriefMode = $('antiGriefMode');
 const eraseMode = $('eraseMode');
 const templateOutlineMode = $('templateOutlineMode');
 const templateSkipPaintedPixels = $('templateSkipPaintedPixels');
-const ignoreTransparentPaint = $('ignoreTransparentPaint');
-const onlyPaintExplicitColours = $('onlyPaintExplicitColours');
 const enableAutostart = $('enableAutostart');
 const submitTemplate = $('submitTemplate');
 const manageTemplates = $('manageTemplates');
@@ -553,8 +551,6 @@ templateForm.addEventListener('submit', async (e) => {
         eraseMode: eraseMode.checked,
         outlineMode: templateOutlineMode.checked,
         skipPaintedPixels: templateSkipPaintedPixels.checked,
-        ignoreTransparentPaint: ignoreTransparentPaint.checked,
-        onlyPaintExplicitColours: onlyPaintExplicitColours.checked,
         enableAutostart: enableAutostart.checked,
     };
 
@@ -909,8 +905,6 @@ const createTemplateCard = (t, id) => {
         eraseMode.checked = t.eraseMode;
         templateOutlineMode.checked = t.outlineMode;
         templateSkipPaintedPixels.checked = t.skipPaintedPixels;
-        ignoreTransparentPaint.checked = !!t.ignoreTransparentPaint;
-        onlyPaintExplicitColours.checked = !!t.onlyPaintExplicitColours;
         enableAutostart.checked = t.enableAutostart;
         setTimeout(() => {
             document.querySelectorAll('input[name="user_checkbox"]').forEach((cb) => {
